@@ -22,6 +22,7 @@ h1 {
 
 .first-board {
     color: rgb(64, 153, 221);
+    margin: 5px;
 }
 
 .selected {

@@ -5,12 +5,9 @@ function randomize() {
   let randomizedColor = (selectedElements.style.background = randomColor());
 
   if (selectedElements.classList.contains("selected")) {
-    selectedElements[randomResult + 1].classList.add("selected");
-    selectedElements.style.background = randomColor();
-    randomizedColor;
+    return;
   } else {
     selectedElements.classList.add("selected");
-    selectedElements.style.background = randomColor();
     randomizedColor;
   }
 }
