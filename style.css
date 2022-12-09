@@ -6,8 +6,18 @@ body {
 #container {
     width: 70%;
     margin-inline: auto;
+    border: solid white 5px;
 }
-#container div {
+#container-user {
+    width: 70%;
+    margin-inline: auto;
+    border: solid white 5px;
+}
+#input-div {
+    margin-bottom: 20px;
+    text-align: center;
+}
+#container div  {
     border: white solid;
     font-weight: bold;
     width: 50px;
@@ -16,11 +26,22 @@ body {
     display: inline-block;
     text-align: center;
 }
+
+.userPanel {
+    border: white solid;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
+    text-align: center;
+
+}
 h1 {
     text-align: center;
 }
 
-.first-board {
+.board {
     color: rgb(64, 153, 221);
     margin: 5px;
 }

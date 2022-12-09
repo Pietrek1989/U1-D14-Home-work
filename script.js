@@ -1,18 +1,32 @@
-function randomize() {
-  let randomResult = Math.floor(Math.random(1) * 76 + 1);
+function randomizeAction() {
+  let randomResult = randomize(76);
   let classBoard = document.querySelectorAll(".board");
-  let selectedElements = classBoard[randomResult];
-  let randomizedColor = (selectedElements.style.background = randomColor());
+  let userBoard = document.querySelectorAll(".userPanel");
+  let selectedElements = classBoard[randomResult - 1];
+  let SelectedElementsUser = userBoard[randomResult - 1];
 
   if (selectedElements.classList.contains("selected")) {
-    return;
+    randomize();
   } else {
     selectedElements.classList.add("selected");
-    randomizedColor;
+    selectedElements.style.background = randomColor();
+  }
+  if (SelectedElementsUser.classList.contains("selected")) {
+    randomize();
+  } else if (SelectedElementsUser === selectedElements) {
+    SelectedElementsUser.classList.add("selected");
+    SelectedElementsUser.style.background = randomColor();
+  } else {
+    randomize();
   }
 }
 
-function onLoadActions() {
+function randomize(max) {
+  let randomResult = Math.floor(Math.random(1) * max + 1);
+  return randomResult;
+}
+
+function generateMain() {
   for (let number = 1; number <= 76; number++) {
     let numberNode = document.createElement("div");
     numberNode.innerText = number;
@@ -21,10 +35,29 @@ function onLoadActions() {
   }
 }
 
+function generateOther() {
+  let inputBoards = document.getElementById("numberOfBoards");
+  let numberBoards = inputBoards.value;
+  for (let number = 1; number <= numberBoards; number++) {
+    let userPanel = document.createElement("div");
+    userPanel.classList.add("board");
+    document.getElementById("container-user").appendChild(userPanel);
+
+    for (let number = 1; number <= 26; number++) {
+      let userNumbers = document.createElement("div");
+      userNumbers.innerText = randomize(76);
+      userNumbers.classList.add("userPanel");
+      userPanel.appendChild(userNumbers);
+      console.log(userNumbers);
+    }
+  }
+}
+
+let generate = document.getElementById("getUserBoards");
+
 function randomColor() {
   let randomColor = Math.floor(Math.random() * 16777215).toString(16);
   randomizedcolor = "#" + randomColor;
-  console.log(randomizedcolor);
   return randomizedcolor;
 }
-window.onload = onLoadActions;
+window.onload = generateMain;
